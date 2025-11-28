@@ -139,7 +139,7 @@ public final class AppContext: NSObject, @unchecked Sendable {
     listenToClientAppNotifications()
   }
 
-  public convenience init(legacyModulesProxy: Any, legacyModuleRegistry: Any, config: AppContextConfig? = nil) {
+  public convenience init(legacyModuleRegistry: Any, config: AppContextConfig? = nil) {
     self.init(config: config)
     self.legacyModuleRegistry = legacyModuleRegistry as? EXModuleRegistry
   }
