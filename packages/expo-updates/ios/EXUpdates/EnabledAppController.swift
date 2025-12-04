@@ -7,7 +7,7 @@ import EXUpdatesInterface
 /**
  * Updates controller for applications that have updates enabled and properly-configured.
  */
-public class EnabledAppController: InternalAppControllerInterface, UpdatesEnabledInterface, UpdatesE2ETestingInterface, StartupProcedureDelegate {
+public class EnabledAppController: InternalAppControllerInterface, UpdatesEnabledInterface, StartupProcedureDelegate {
   public weak var delegate: AppControllerDelegate?
   public var reloadScreenManager: Reloadable? = ReloadScreenManager()
 
@@ -180,6 +180,7 @@ public class EnabledAppController: InternalAppControllerInterface, UpdatesEnable
 
   public var isEnabled: Bool = true
 
+  // Used only in Expo internal E2E testing
   public func getInternalDbAssetCountAsync(_ promise: Promise) {
     guard let assetsFolder = updatesDirectory else {
       promise.reject("ERR_UPDATES_E2E_READ", "No updatesDirectory initialized")
@@ -201,6 +202,7 @@ public class EnabledAppController: InternalAppControllerInterface, UpdatesEnable
     }
   }
 
+  // Used only in Expo internal E2E testing
   public func clearInternalDbAssetsAsync(_ promise: Promise) {
     guard let assetsFolder = updatesDirectory else {
       promise.reject("ERR_UPDATES_E2E_CLEAR", "No updatesDirectory initialized")
