@@ -3,7 +3,7 @@
 import ExpoModulesCore
 import EXUpdatesInterface
 
-let e2eEventName = "updatesStateDidChange"
+let e2eEventName = "Expo.updatesE2EStateChangeEvent"
 
 public final class E2ETestModule: Module, UpdatesStateChangeListener {
   private let methodQueue = DispatchQueue(label: "expo.modules.EXUpdatesQueue")
@@ -58,15 +58,15 @@ public final class E2ETestModule: Module, UpdatesStateChangeListener {
       }
     }
 
-    Function("launchedUpdateId") {
+    Function("getLaunchedUpdateId") {
       return updatesController?.launchedUpdateId
     }
 
-    Function("embeddedUpdateId") {
+    Function("getEmbeddedUpdateId") {
       return updatesController?.embeddedUpdateId
     }
 
-    Function("runtimeVersion") {
+    Function("getRuntimeVersion") {
       return updatesController?.runtimeVersion
     }
 
