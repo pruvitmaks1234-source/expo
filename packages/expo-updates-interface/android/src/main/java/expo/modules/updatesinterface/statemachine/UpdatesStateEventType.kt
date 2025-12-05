@@ -1,4 +1,4 @@
-package expo.modules.updates.statemachine
+package expo.modules.updatesinterface.statemachine
 
 /**
 All the possible types of events that can be sent to the machine. Each event

@@ -13,7 +13,7 @@ import expo.modules.updates.loader.UpdateResponse
 import expo.modules.updates.logging.UpdatesLogger
 import expo.modules.updates.manifest.EmbeddedManifestUtils
 import expo.modules.updates.selectionpolicy.SelectionPolicy
-import expo.modules.updates.statemachine.UpdatesStateEvent
+import expo.modules.updatesinterface.statemachine.UpdatesStateEvent
 import kotlinx.coroutines.CancellationException
 import org.json.JSONObject
 

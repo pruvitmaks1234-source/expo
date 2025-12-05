@@ -4,7 +4,7 @@ import android.app.Activity
 import android.content.Context
 import com.facebook.react.ReactApplication
 import expo.modules.updates.launcher.Launcher
-import expo.modules.updates.statemachine.UpdatesStateEvent
+import expo.modules.updatesinterface.statemachine.UpdatesStateEvent
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

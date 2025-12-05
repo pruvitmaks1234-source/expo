@@ -20,7 +20,7 @@ import expo.modules.updates.logging.UpdatesErrorCode
 import expo.modules.updates.logging.UpdatesLogger
 import expo.modules.updates.manifest.Update
 import expo.modules.updates.selectionpolicy.SelectionPolicy
-import expo.modules.updates.statemachine.UpdatesStateEvent
+import expo.modules.updatesinterface.statemachine.UpdatesStateEvent
 import expo.modules.updates.statemachine.UpdatesStateValue
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

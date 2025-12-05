@@ -1,7 +1,7 @@
 package expo.modules.updates.procedures
 
 import expo.modules.updates.logging.IUpdatesLogger
-import expo.modules.updates.statemachine.UpdatesStateEvent
+import expo.modules.updatesinterface.statemachine.UpdatesStateEvent
 import expo.modules.updates.statemachine.UpdatesStateValue
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.CoroutineScope

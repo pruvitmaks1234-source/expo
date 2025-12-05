@@ -12,7 +12,7 @@ import expo.modules.updates.loader.RemoteLoader
 import expo.modules.updates.loader.UpdateDirective
 import expo.modules.updates.logging.UpdatesLogger
 import expo.modules.updates.selectionpolicy.SelectionPolicy
-import expo.modules.updates.statemachine.UpdatesStateEvent
+import expo.modules.updatesinterface.statemachine.UpdatesStateEvent
 import kotlinx.coroutines.CancellationException
 import java.io.File
 

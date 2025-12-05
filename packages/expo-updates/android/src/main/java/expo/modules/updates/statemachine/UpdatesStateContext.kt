@@ -1,6 +1,7 @@
 package expo.modules.updates.statemachine
 
 import android.os.Bundle
+import expo.modules.updatesinterface.statemachine.*
 import org.json.JSONObject
 import java.text.SimpleDateFormat
 import java.util.Date

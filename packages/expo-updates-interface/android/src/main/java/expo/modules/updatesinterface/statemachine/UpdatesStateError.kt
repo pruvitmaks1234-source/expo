@@ -1,4 +1,4 @@
-package expo.modules.updates.statemachine
+package expo.modules.updatesinterface.statemachine
 
 /**
  * For the state machine, errors are stored as data objects.
