@@ -1,14 +1,35 @@
 package expo.modules.updatesinterface
 
 import android.net.Uri
+import expo.modules.updatesinterface.statemachine.UpdatesStateEvent
 import org.json.JSONObject
 import java.lang.ref.WeakReference
+import java.util.UUID
 
 /**
  * Interface for modules that depend on expo-updates for loading production updates but do not want
  * to depend on expo-updates or delegate control to the singleton UpdatesController.
+ *
+ * All updates controllers implement this protocol
  */
 interface UpdatesInterface {
+  val runtimeVersion: String?
+  val updateUrl: Uri?
+  val isEnabled: Boolean get() = false
+}
+
+/**
+ * Implemented only by the enabled updates controller
+ */
+interface UpdatesEnabledInterface: UpdatesInterface {
+  val launchedUpdateId: UUID?
+  val embeddedUpdateId: UUID?
+}
+
+/**
+ * Implemented only by the dev launcher updates controller.
+ */
+interface UpdatesDevLauncherInterface: UpdatesInterface {
   interface UpdateCallback {
     fun onFailure(e: Exception?)
     fun onSuccess(update: Update?)
@@ -32,7 +53,8 @@ interface UpdatesInterface {
   fun reset()
   fun fetchUpdateWithConfiguration(configuration: HashMap<String, Any>, callback: UpdateCallback)
   fun isValidUpdatesConfiguration(configuration: HashMap<String, Any>): Boolean
+}
 
-  val runtimeVersion: String?
-  val updateUrl: Uri?
+interface UpdatesStateChangeListener {
+  fun updatesStateDidChange(event: UpdatesStateEvent)
 }

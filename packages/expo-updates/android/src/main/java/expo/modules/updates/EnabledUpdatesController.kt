@@ -31,7 +31,7 @@ import expo.modules.updates.selectionpolicy.SelectionPolicy
 import expo.modules.updates.selectionpolicy.SelectionPolicyFactory
 import expo.modules.updates.statemachine.UpdatesStateMachine
 import expo.modules.updates.statemachine.UpdatesStateValue
-import expo.modules.updatesinterface.UpdatesMetricsInterface
+import expo.modules.updatesinterface.UpdatesEnabledInterface
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -57,7 +57,7 @@ class EnabledUpdatesController(
   private val context: Context,
   private var updatesConfiguration: UpdatesConfiguration,
   override val updatesDirectory: File
-) : IUpdatesController, UpdatesMetricsInterface {
+) : IUpdatesController, UpdatesEnabledInterface {
   /** Keep the activity for [RelaunchProcedure] to relaunch the app. */
   private var weakActivity: WeakReference<Activity>? = null
   private val logger = UpdatesLogger(context.filesDir)

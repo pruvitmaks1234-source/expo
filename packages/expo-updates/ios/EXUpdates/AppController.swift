@@ -222,6 +222,7 @@ public class AppController: NSObject {
       UpdatesControllerRegistry.sharedInstance.controller = devLauncherController as (any UpdatesDevLauncherInterface)
       #else
       _sharedInstance = DisabledAppController(error: nil)
+      UpdatesControllerRegistry.sharedInstance.controller = _sharedInstance as? (any UpdatesInterface)
       #endif
       return
     }
@@ -273,7 +274,7 @@ public class AppController: NSObject {
         let directory = try initializeUpdatesDirectory()
         try initializeUpdatesDatabase(updatesDatabase: updatesDatabase, inUpdatesDirectory: directory, logger: logger)
         _sharedInstance = EnabledAppController(config: config, database: updatesDatabase, updatesDirectory: directory)
-        UpdatesControllerRegistry.sharedInstance.controller = _sharedInstance as! any UpdatesEnabledInterface as (any UpdatesEnabledInterface)
+        UpdatesControllerRegistry.sharedInstance.controller = _sharedInstance as? (any UpdatesEnabledInterface)
       } catch {
         let cause = UpdatesError.appControllerInitializationError(cause: error)
         logger.error(
@@ -281,6 +282,7 @@ public class AppController: NSObject {
           code: .initializationError
         )
         _sharedInstance = DisabledAppController(error: cause)
+        UpdatesControllerRegistry.sharedInstance.controller = _sharedInstance as? (any UpdatesInterface)
         return
       }
     } else {
