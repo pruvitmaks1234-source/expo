@@ -24,6 +24,7 @@ interface UpdatesInterface {
 interface UpdatesEnabledInterface: UpdatesInterface {
   val launchedUpdateId: UUID?
   val embeddedUpdateId: UUID?
+  var stateChangeListener: UpdatesStateChangeListener?
 }
 
 /**

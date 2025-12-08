@@ -32,6 +32,7 @@ import expo.modules.updates.selectionpolicy.SelectionPolicyFactory
 import expo.modules.updates.statemachine.UpdatesStateMachine
 import expo.modules.updates.statemachine.UpdatesStateValue
 import expo.modules.updatesinterface.UpdatesEnabledInterface
+import expo.modules.updatesinterface.UpdatesStateChangeListener
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -320,7 +321,7 @@ class EnabledUpdatesController(
     updatesConfiguration = UpdatesConfiguration.create(context, updatesConfiguration, configOverride)
   }
 
-  // UpdatesMetricsInterface implementations
+  // UpdatesEnabledInterface implementations
 
   override val runtimeVersion: String?
     get() = updatesConfiguration.runtimeVersionRaw
@@ -333,6 +334,10 @@ class EnabledUpdatesController(
 
   override val embeddedUpdateId: UUID?
     get() = getEmbeddedUpdate()?.id
+
+  override var stateChangeListener: UpdatesStateChangeListener? = null
+
+  override val isEnabled: Boolean = true
 
   companion object {
     private val TAG = EnabledUpdatesController::class.java.simpleName

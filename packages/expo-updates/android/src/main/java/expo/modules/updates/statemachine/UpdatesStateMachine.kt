@@ -1,9 +1,12 @@
 package expo.modules.updates.statemachine
 
+import expo.modules.updates.EnabledUpdatesController
 import expo.modules.updates.events.IUpdatesEventManager
 import expo.modules.updates.logging.UpdatesLogger
 import expo.modules.updates.procedures.StateMachineProcedure
 import expo.modules.updates.procedures.StateMachineSerialExecutorQueue
+import expo.modules.updatesinterface.UpdatesControllerRegistry
+import expo.modules.updatesinterface.UpdatesEnabledInterface
 import expo.modules.updatesinterface.statemachine.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -73,6 +76,12 @@ class UpdatesStateMachine(
     if (transition(event)) {
       context = reduceContext(context, event)
       logger.info("Updates state change: ${event.type}, context = ${context.json}")
+      UpdatesControllerRegistry.controller?.get()?.let {
+        if (it is UpdatesEnabledInterface) {
+          // Notify the controller state change listener
+          it.stateChangeListener?.updatesStateDidChange(event)
+        }
+      }
       sendContextToJS()
     }
   }
