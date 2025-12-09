@@ -22,8 +22,8 @@ interface UpdatesInterface {
  * Implemented only by the enabled updates controller
  */
 interface UpdatesEnabledInterface: UpdatesInterface {
-  val launchedUpdateId: UUID?
-  val embeddedUpdateId: UUID?
+  val launchedUpdateId: UUID? get() = null
+  val embeddedUpdateId: UUID? get() = null
   var stateChangeListener: UpdatesStateChangeListener?
 }
 

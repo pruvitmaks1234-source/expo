@@ -52,10 +52,8 @@ public final class E2ETestModule: Module, UpdatesStateChangeListener {
     }
 
     OnDestroy {
+      updatesController?.stateChangeListener = nil
       updatesController = nil
-      if let controller = UpdatesControllerRegistry.sharedInstance.controller as? UpdatesEnabledInterface {
-        controller.stateChangeListener = nil
-      }
     }
 
     Function("getLaunchedUpdateId") {
