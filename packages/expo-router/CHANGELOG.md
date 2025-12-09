@@ -75,6 +75,7 @@
 - extract children utils to common file ([#41238](https://github.com/expo/expo/pull/41238) by [@Ubax](https://github.com/Ubax))
 - [iOS] replace LinkPreviewNativeNavigationObjC with direct swift calls ([#41331](https://github.com/expo/expo/pull/41331) by [@Ubax](https://github.com/Ubax))
 - add utility function parseUrlUsingCustomBase ([#41506](https://github.com/expo/expo/pull/41506) by [@Ubax](https://github.com/Ubax))
+- [ios] add internal animateAspectRatioChange prop ([#41511](https://github.com/expo/expo/pull/41511) by [@Ubax](https://github.com/Ubax))
 
 ## 6.0.17 - 2025-12-05
 
