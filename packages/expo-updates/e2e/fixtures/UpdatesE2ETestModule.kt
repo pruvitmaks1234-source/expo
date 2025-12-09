@@ -58,20 +58,28 @@ class UpdatesE2ETestModule : Module(), UpdatesStateChangeListener {
       return@Function updatesController?.runtimeVersion
     }
 
-
     AsyncFunction("clearInternalAssetsFolderAsync") { promise: Promise ->
-      updatesController?.let {
-        if (it is UpdatesEnabledTestingInterface) {
-          it.clearInternalAssetsFolderAsync(promise)
-        }
+      try {
+        val assetsFolder = UpdatesController.instance.updatesDirectory
+        assetsFolder!!.deleteRecursively()
+        promise.resolve(null)
+      } catch (e: Throwable) {
+        promise.reject("ERR_E2E_TEST", null, e)
       }
     }
 
     AsyncFunction("readInternalAssetsFolderAsync") { promise: Promise ->
-      updatesController?.let {
-        if (it is UpdatesEnabledTestingInterface) {
-          it.readInternalAssetsFolderAsync(promise)
+      try {
+        val assetsFolder = UpdatesController.instance.updatesDirectory
+        if (!assetsFolder!!.exists()) {
+          promise.resolve(0)
+        } else {
+          val count = assetsFolder.walk()
+            .count() - 1 // subtract one for the folder itself, which is included in walk()
+          promise.resolve(count)
         }
+      } catch (e: Throwable) {
+        promise.reject("ERR_E2E_TEST", null, e)
       }
     }
   }
@@ -79,7 +87,7 @@ class UpdatesE2ETestModule : Module(), UpdatesStateChangeListener {
   override fun updatesStateDidChange(event: UpdatesStateEvent) {
     if (hasListener) {
       val payload = Bundle()
-      payload.putString("type", event.type.toString())
+      payload.putString("type", event.type.type)
       when(event) {
         is UpdatesStateEvent.CheckCompleteWithUpdate -> {
           val manifest = event.manifest
