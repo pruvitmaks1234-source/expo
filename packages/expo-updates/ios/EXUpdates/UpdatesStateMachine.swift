@@ -65,7 +65,6 @@ extension UpdatesStateEvent {
       return .restart
     }
   }
-
 }
 
 /**

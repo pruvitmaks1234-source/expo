@@ -105,9 +105,9 @@ public class DisabledAppController: InternalAppControllerInterface, UpdatesInter
 
   // MARK: UpdatesInterface
 
-  public var runtimeVersion: String? = nil
+  public var runtimeVersion: String?
 
-  public var updateURL: URL? = nil
+  public var updateURL: URL?
 
   public var isEnabled: Bool = false
 

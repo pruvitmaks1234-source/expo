@@ -20,4 +20,3 @@ public enum UpdatesStateEvent {
   case downloadProgress(progress: Double)
   case restart
 }
-
