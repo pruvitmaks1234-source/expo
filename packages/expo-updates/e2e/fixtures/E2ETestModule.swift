@@ -15,7 +15,11 @@ public final class E2ETestModule: Module, UpdatesStateChangeListener {
       var payload: [String: Any] = [ "type" : "\(event.type)" ]
       switch (event) {
       case let .checkCompleteWithUpdate(manifest):
+        payload["type"] = "checkCompleteWithUpdate"
         payload["manifest"] = manifest
+        break;
+      case let .checkCompleteWithRollback(commitTime):
+        payload["type"] = "checkCompleteWithRollback"
         break;
       case let .downloadCompleteWithUpdate(manifest):
         payload["manifest"] = manifest
