@@ -10,11 +10,6 @@ import expo.modules.updatesinterface.UpdatesEnabledInterface
 import expo.modules.updatesinterface.UpdatesStateChangeListener
 import expo.modules.updatesinterface.statemachine.UpdatesStateEvent
 
-interface UpdatesEnabledTestingInterface: UpdatesEnabledInterface {
-  fun clearInternalAssetsFolderAsync(promise: Promise)
-  fun readInternalAssetsFolderAsync(promise: Promise)
-}
-
 class UpdatesE2ETestModule : Module(), UpdatesStateChangeListener {
   private var hasListener: Boolean = false
   private var updatesController: UpdatesEnabledInterface? = null
