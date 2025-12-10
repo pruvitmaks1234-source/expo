@@ -8,6 +8,7 @@
 
 - [Android][iOS] Add `seek tolerance` and `scrubbingModeOptions` properties to the player. ([#40203](https://github.com/expo/expo/pull/40203) by [@behenate](https://github.com/behenate))
 - Allow assigning `null` value to the `player` prop of the `VideoView` ([#40860](https://github.com/expo/expo/pull/40860) by [@behenate](https://github.com/behenate))
+- [Android][iOS] Add `averageBitrate` and `peakBitrate` for video tracks. ([#41532](https://github.com/expo/expo/pull/41532) by [@behenate](https://github.com/behenate))
 
 ### 🐛 Bug fixes
 
@@ -21,6 +22,7 @@
 - [Android] Remove @UnstableReactNativeAPI annotations. ([#39921](https://github.com/expo/expo/pull/39921) by [@jakex7](https://github.com/jakex7))
 - [iOS] Load track information for events in asynchronous context. ([#40355](https://github.com/expo/expo/pull/40355) by [@behenate](https://github.com/behenate))
 - Add extract the object `VideoSource` type into separate `VideoSourceObject` type. ([#41514](https://github.com/expo/expo/pull/41514) by [@behenate](https://github.com/behenate))
+- Mark the video track `bitrate` field as deprecated. ([#41532](https://github.com/expo/expo/pull/41532) by [@behenate](https://github.com/behenate))
 
 ## 3.0.15 - 2025-12-05
 
